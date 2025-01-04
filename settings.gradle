@@ -1,0 +1,3 @@
+rootProject.name = 'CharacterGenerator'
+
+include 'DnD_Compendium-client'
