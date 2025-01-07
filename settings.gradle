@@ -1,3 +1,5 @@
 rootProject.name = 'CharacterGenerator'
 
 include 'DnD_Compendium-client'
+include 'dnd_compendium-data'
+include 'DnD_Compendium-updater'

@@ -1,19 +1,24 @@
 package org.example.dnd_compendiumclient.compendiumclient;
 
+import org.example.dnd_compendiumclient.compendiumclient.contract.DndCompendiumClientUriBuilderProvider;
+import org.example.dnd_compendiumclient.compendiumclient.contract.IDndCompendiumClientUriBuilderProvider;
 import org.example.dnd_compendiumclient.compendiumclient.contract.SpellResultDto;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 public class SpellsClient implements ISpellsClient{
 
     RestTemplate restTemplate;
+    IDndCompendiumClientUriBuilderProvider provider;
 
-    public SpellsClient() {
-        restTemplate = new RestTemplate();
+    public SpellsClient(IDndCompendiumClientUriBuilderProvider provider) {
+        this.restTemplate = new RestTemplate();
+        this.provider = provider;
     }
 
     @Override
     public SpellResultDto getSpells() {
-        String uri = "https://www.dnd5eapi.co/api/spells";
+        var uri = provider.builder().pathSegment("spells").toUriString();
         return restTemplate.getForEntity(uri, SpellResultDto.class).getBody();
     }
 }

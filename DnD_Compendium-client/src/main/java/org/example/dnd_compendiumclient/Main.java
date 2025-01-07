@@ -1,15 +1,16 @@
 package org.example.dnd_compendiumclient;
 
-import org.example.dnd_compendiumclient.compendiumclient.ISpellsClient;
-import org.example.dnd_compendiumclient.compendiumclient.SpellsClient;
+import org.example.dnd_compendiumclient.compendiumclient.ICompendiumClient;
 
 public class Main {
     public static void main(String[] args) {
 
     }
 
-    public static void test(){
-        ISpellsClient spellsClient = new SpellsClient();
-        System.out.println(spellsClient.getSpells().results());
+    public static void test(ICompendiumClient client){
+        System.out.println(client.getSpellsClient().getSpells().results());
+        System.out.println(client.getRaceClient().getRaces().results());
+        System.out.println(client.getRaceClient().getSubRaces().results());
+        System.out.println(client.getAbilityScore().results());
     }
 }

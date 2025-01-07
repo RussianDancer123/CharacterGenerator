@@ -16,7 +16,9 @@ public class Spell {
     @ManyToOne
     private SpellDetails spellDetails;
 
+    @Column(unique=true)
     private String entityIndex;
+
     private String name;
     private int level;
     private String url;

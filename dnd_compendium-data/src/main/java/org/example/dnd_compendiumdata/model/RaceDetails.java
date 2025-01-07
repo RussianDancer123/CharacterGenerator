@@ -13,7 +13,10 @@ public class RaceDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @Column(unique=true)
     private String entityIndex;
+
     private String name;
     private int speed;
 }
