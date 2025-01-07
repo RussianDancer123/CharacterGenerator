@@ -16,17 +16,44 @@ public class CompendiumClientConfig {
     }
 
     @Bean
+    public IAbilityScoreClient abilityScoreClient(IDndCompendiumClientUriBuilderProvider uriBuilderProvider){
+        return new AbilityScoreClient(uriBuilderProvider);
+    }
+
+    @Bean
+    public IAlignmentClient alignmentClient(IDndCompendiumClientUriBuilderProvider uriBuilderProvider){
+        return new AlignmentClient(uriBuilderProvider);
+    }
+
+    @Bean
+    public IBackgroundClient backgroundClient(IDndCompendiumClientUriBuilderProvider uriBuilderProvider){
+        return new BackgroundClient(uriBuilderProvider);
+    }
+
+    @Bean
+    public ICharacterClassClient characterClassClient(IDndCompendiumClientUriBuilderProvider uriBuilderProvider){
+        return new CharacterClassClient(uriBuilderProvider);
+    }
+
+    @Bean
     public ISpellsClient spellsClient(IDndCompendiumClientUriBuilderProvider uriBuilderProvider){
         return new SpellsClient(uriBuilderProvider);
     }
 
-    @Bean IRaceClient raceClient(IDndCompendiumClientUriBuilderProvider uriBuilderProvider){
+    @Bean
+    public IRaceClient raceClient(IDndCompendiumClientUriBuilderProvider uriBuilderProvider){
         return new RaceClient(uriBuilderProvider);
     }
 
     @Bean
     @Scope("prototype")
-    public ICompendiumClient compendiumClient(IDndCompendiumClientUriBuilderProvider provider, ISpellsClient spellsClient, IRaceClient raceClient) {
-        return new CompendiumClient(provider, spellsClient, raceClient);
+    public ICompendiumClient compendiumClient(IDndCompendiumClientUriBuilderProvider provider
+            , IAbilityScoreClient abilityScoreClient
+            , IAlignmentClient alignmentClient
+            , IBackgroundClient backgroundClient
+            , ICharacterClassClient characterClassClient
+            , ISpellsClient spellsClient
+            , IRaceClient raceClient) {
+        return new CompendiumClient(provider, abilityScoreClient, alignmentClient, backgroundClient, characterClassClient, spellsClient, raceClient);
     }
 }
