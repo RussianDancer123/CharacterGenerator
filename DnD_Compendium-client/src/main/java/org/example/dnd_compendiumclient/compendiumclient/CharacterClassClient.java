@@ -1,6 +1,6 @@
 package org.example.dnd_compendiumclient.compendiumclient;
 
-import org.example.dnd_compendiumclient.compendiumclient.contract.CharacterClassResultDto;
+import org.example.dnd_compendiumclient.compendiumclient.contract.CompendiumEntryResultDto;
 import org.example.dnd_compendiumclient.compendiumclient.contract.IDndCompendiumClientUriBuilderProvider;
 import org.springframework.web.client.RestTemplate;
 
@@ -14,8 +14,8 @@ public class CharacterClassClient implements ICharacterClassClient{
     }
 
     @Override
-    public CharacterClassResultDto getCharacterClasses() {
+    public CompendiumEntryResultDto getCharacterClasses() {
         var uri = provider.builder().pathSegment("classes").toUriString();
-        return restTemplate.getForEntity(uri, CharacterClassResultDto.class).getBody();
+        return restTemplate.getForEntity(uri, CompendiumEntryResultDto.class).getBody();
     }
 }

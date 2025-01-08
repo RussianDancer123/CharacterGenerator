@@ -54,6 +54,12 @@ public class CompendiumClientConfig {
             , ICharacterClassClient characterClassClient
             , ISpellsClient spellsClient
             , IRaceClient raceClient) {
-        return new CompendiumClient(provider, abilityScoreClient, alignmentClient, backgroundClient, characterClassClient, spellsClient, raceClient);
+        return new CompendiumClient(provider
+                , abilityScoreClient
+                , alignmentClient
+                , backgroundClient
+                , characterClassClient
+                , spellsClient
+                , raceClient);
     }
 }

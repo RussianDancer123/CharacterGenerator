@@ -1,7 +1,6 @@
 package org.example.dnd_compendiumclient.compendiumclient;
 
 import lombok.Getter;
-import org.example.dnd_compendiumclient.compendiumclient.contract.AbilityScoreResultDto;
 import org.example.dnd_compendiumclient.compendiumclient.contract.IDndCompendiumClientUriBuilderProvider;
 import org.springframework.web.client.RestTemplate;
 

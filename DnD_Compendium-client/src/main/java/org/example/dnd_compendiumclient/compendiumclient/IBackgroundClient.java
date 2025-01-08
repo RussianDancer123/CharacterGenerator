@@ -1,7 +1,7 @@
 package org.example.dnd_compendiumclient.compendiumclient;
 
-import org.example.dnd_compendiumclient.compendiumclient.contract.BackgroundResultDto;
+import org.example.dnd_compendiumclient.compendiumclient.contract.CompendiumEntryResultDto;
 
 public interface IBackgroundClient {
-    BackgroundResultDto getBackgrounds();
+    CompendiumEntryResultDto getBackgrounds();
 }

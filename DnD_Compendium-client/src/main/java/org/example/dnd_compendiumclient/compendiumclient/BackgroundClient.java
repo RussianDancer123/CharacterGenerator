@@ -1,6 +1,6 @@
 package org.example.dnd_compendiumclient.compendiumclient;
 
-import org.example.dnd_compendiumclient.compendiumclient.contract.BackgroundResultDto;
+import org.example.dnd_compendiumclient.compendiumclient.contract.CompendiumEntryResultDto;
 import org.example.dnd_compendiumclient.compendiumclient.contract.IDndCompendiumClientUriBuilderProvider;
 import org.springframework.web.client.RestTemplate;
 
@@ -14,8 +14,8 @@ public class BackgroundClient implements IBackgroundClient {
     }
 
     @Override
-    public BackgroundResultDto getBackgrounds() {
+    public CompendiumEntryResultDto getBackgrounds() {
         var uri = provider.builder().pathSegment("backgrounds").toUriString();
-        return restTemplate.getForEntity(uri, BackgroundResultDto.class).getBody();
+        return restTemplate.getForEntity(uri, CompendiumEntryResultDto.class).getBody();
     }
 }

@@ -14,15 +14,15 @@ public class RaceClient implements IRaceClient{
     }
 
     @Override
-    public RaceResultDto getRaces(){
+    public CompendiumEntryResultDto getRaces(){
         var uri = provider.builder().pathSegment("races").toUriString();
-        return restTemplate.getForEntity(uri, RaceResultDto.class).getBody();
+        return restTemplate.getForEntity(uri, CompendiumEntryResultDto.class).getBody();
     }
 
     @Override
-    public SubRaceResultDto getSubRaces() {
+    public CompendiumEntryResultDto getSubRaces() {
         var uri = provider.builder().pathSegment("subraces").toUriString();
-        return restTemplate.getForEntity(uri, SubRaceResultDto.class).getBody();
+        return restTemplate.getForEntity(uri, CompendiumEntryResultDto.class).getBody();
     }
 
 

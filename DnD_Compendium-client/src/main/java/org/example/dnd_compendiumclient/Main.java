@@ -11,6 +11,6 @@ public class Main {
         System.out.println(client.getSpellsClient().getSpells().results());
         System.out.println(client.getRaceClient().getRaces().results());
         System.out.println(client.getRaceClient().getSubRaces().results());
-        System.out.println(client.getAbilityScore().results());
+        System.out.println(client.getAbilityScoreClient().getAbilityScore().results());
     }
 }
