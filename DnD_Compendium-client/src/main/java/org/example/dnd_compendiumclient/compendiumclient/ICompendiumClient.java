@@ -8,4 +8,5 @@ public interface ICompendiumClient {
     ICharacterClassClient getCharacterClassClient();
     ISpellsClient getSpellsClient();
     IRaceClient getRaceClient();
+    ISkillClient getSkillClient();
 }

@@ -10,4 +10,9 @@ public class CharacterClass {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    private String entityIndex;
+    private String name;
+    private String hitDie;
+
 }

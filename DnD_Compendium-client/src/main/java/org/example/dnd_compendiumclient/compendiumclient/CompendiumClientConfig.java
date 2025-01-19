@@ -41,6 +41,11 @@ public class CompendiumClientConfig {
     }
 
     @Bean
+    public ISkillClient skillClient(IDndCompendiumClientUriBuilderProvider uriBuilderProvider){
+        return new SkillClient(uriBuilderProvider);
+    }
+
+    @Bean
     public IRaceClient raceClient(IDndCompendiumClientUriBuilderProvider uriBuilderProvider){
         return new RaceClient(uriBuilderProvider);
     }
@@ -53,6 +58,7 @@ public class CompendiumClientConfig {
             , IBackgroundClient backgroundClient
             , ICharacterClassClient characterClassClient
             , ISpellsClient spellsClient
+            , ISkillClient skillClient
             , IRaceClient raceClient) {
         return new CompendiumClient(provider
                 , abilityScoreClient
@@ -60,6 +66,7 @@ public class CompendiumClientConfig {
                 , backgroundClient
                 , characterClassClient
                 , spellsClient
+                , skillClient
                 , raceClient);
     }
 }

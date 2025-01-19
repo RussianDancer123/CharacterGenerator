@@ -1,7 +1,7 @@
 package org.example.dnd_compendiumclient.compendiumclient;
 
 import org.example.dnd_compendiumclient.compendiumclient.contract.CompendiumEntryResultDto;
-import org.example.dnd_compendiumclient.compendiumclient.contract.RaceDetailDto;
+import org.example.dnd_compendiumclient.compendiumclient.contract.details.RaceDetailDto;
 
 public interface IRaceClient {
     CompendiumEntryResultDto getRaces();

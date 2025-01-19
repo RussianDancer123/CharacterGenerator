@@ -7,14 +7,14 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Spell {
+public class Spell{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @ManyToOne
-    private SpellDetails spellDetails;
+    private SpellDetails details;
 
     @Column(unique=true)
     private String entityIndex;

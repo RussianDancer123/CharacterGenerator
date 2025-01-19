@@ -19,7 +19,7 @@ public class DndCompendiumDataApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception{
-		raceRepository.flush();
+//		raceRepository.flush();
 	}
 
 }

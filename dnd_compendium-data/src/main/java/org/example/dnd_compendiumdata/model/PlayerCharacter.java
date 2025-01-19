@@ -15,14 +15,11 @@ public class PlayerCharacter {
     private long id;
     private String playerName;
     private String name;
+    private String gender;
+    private int level;
 
     @ManyToOne
     private CharacterClass characterClass;
-
-    private int classLevel;
-
-    @ManyToOne
-    private Background background;
 
     @ManyToOne
     private SubRace subRace;
@@ -40,5 +37,8 @@ public class PlayerCharacter {
 
     @ManyToMany
     private List<Spell> spells;
+
+    @ManyToMany
+    private List<Skill> skills;
 
 }

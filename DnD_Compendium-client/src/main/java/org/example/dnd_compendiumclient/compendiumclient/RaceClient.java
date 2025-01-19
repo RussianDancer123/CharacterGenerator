@@ -1,6 +1,7 @@
 package org.example.dnd_compendiumclient.compendiumclient;
 
 import org.example.dnd_compendiumclient.compendiumclient.contract.*;
+import org.example.dnd_compendiumclient.compendiumclient.contract.details.RaceDetailDto;
 import org.springframework.web.client.RestTemplate;
 
 public class RaceClient implements IRaceClient{

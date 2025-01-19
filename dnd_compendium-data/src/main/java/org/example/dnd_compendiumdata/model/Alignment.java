@@ -1,9 +1,6 @@
 package org.example.dnd_compendiumdata.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Alignment {
@@ -13,4 +10,7 @@ public class Alignment {
     private String entityIndex;
     private String name;
     private String url;
+
+    @Column(columnDefinition = "TEXT")
+    private String description;
 }

@@ -18,5 +18,8 @@ public class RaceDetails {
     private String entityIndex;
 
     private String name;
+    private String url;
     private int speed;
+    private String age;
+    private String size;
 }

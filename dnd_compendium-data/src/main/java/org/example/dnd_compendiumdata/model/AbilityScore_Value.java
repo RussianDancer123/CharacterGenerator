@@ -19,6 +19,6 @@ public class AbilityScore_Value {
     private PlayerCharacter playerCharacter;
 
     @ManyToOne
-    @JoinColumn(name="ability_score_entity_index")
+    @JoinColumn(name="ability_score_id")
     private AbilityScore abilityScore;
 }

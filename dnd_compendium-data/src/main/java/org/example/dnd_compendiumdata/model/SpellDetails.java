@@ -15,4 +15,7 @@ public class SpellDetails {
 
     @Column(unique=true)
     private String entityIndex;
+
+    @Column(columnDefinition = "TEXT")
+    private String description;
 }

@@ -1,19 +1,25 @@
 package org.example.dnd_compendiumdata.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-public class AbilityScore {
+@Getter
+@Setter
+public class AbilityScore{
 
     @Id
-    private String entityIndex;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
+    private String entityIndex;
     private String name;
     private String fullName;
+
+    @Column(columnDefinition = "TEXT")
     private String description;
+
     private String url;
 
 
