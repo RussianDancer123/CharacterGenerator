@@ -1,7 +1,9 @@
 package org.example.dnd_compendiumwebapi.controller;
 
+import org.example.dnd_compendiumdata.model.PlayerCharacter;
 import org.example.dnd_compendiumwebapi.contract.*;
 import org.example.dnd_compendiumwebapi.service.WebApiService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,19 +33,31 @@ public class WebApiController {
         return service.getCharacters();
     }
 
-    @GetMapping("character/{id}")
-    public ResponseEntity<PlayerCharacterDto> getCharacterById(@PathVariable int id) {
-        return service.getCharacterById(id);
+    @GetMapping("character/{name}")
+    public ResponseEntity<?> getCharacterByName(@PathVariable String name) {
+        try {
+            return service.getCharacterByName(name);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
     }
 
-    @DeleteMapping("character/{id}")
-    public ResponseEntity<Boolean> deleteCharacterById(@PathVariable int id) {
-        return service.deleteCharacterById(id);
+    @DeleteMapping("character/{name}")
+    public ResponseEntity<?> deleteCharacterByName(@PathVariable String name) {
+        try {
+            return service.deleteCharacterByName(name);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
     }
 
     @PostMapping("character")
-    public ResponseEntity<PlayerCharacterDto> addCharacter(@RequestBody PlayerCharacterDto dto) {
-        return service.saveCharacter(dto);
+    public ResponseEntity<?> addCharacter(@RequestBody PlayerCharacterDto dto) {
+        try {
+            return service.saveCharacter(dto);
+        }catch (Exception e) {
+            return ResponseEntity.status(409).body(e.getMessage());
+        }
     }
 
     @GetMapping("classes")

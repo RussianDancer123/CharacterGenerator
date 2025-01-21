@@ -1,11 +1,15 @@
 package org.example.dnd_compendiumwebapi.service;
 
 import jakarta.transaction.Transactional;
+import lombok.AllArgsConstructor;
 import org.example.dnd_compendiumdata.model.*;
 import org.example.dnd_compendiumdata.repositories.CompendiumRepositories;
 import org.example.dnd_compendiumupdater.updater.ICompendiumUpdater;
 import org.example.dnd_compendiumwebapi.contract.*;
 import org.example.dnd_compendiumwebapi.mapper.ApiGenericMapper;
+import org.example.dnd_compendiumwebapi.mapper.PlayerCharacterMapper;
+import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -13,17 +17,13 @@ import java.util.List;
 
 @Service
 @Transactional
+@AllArgsConstructor
 public class WebApiService {
 
     private final CompendiumRepositories compendiumRepositories;
     private final ApiGenericMapper genericMapper;
     private final ICompendiumUpdater compendiumUpdater;
-
-    public WebApiService(CompendiumRepositories compendiumRepositories, ApiGenericMapper genericMapper, ICompendiumUpdater compendiumUpdater) {
-        this.compendiumRepositories = compendiumRepositories;
-        this.genericMapper = genericMapper;
-        this.compendiumUpdater = compendiumUpdater;
-    }
+    private final PlayerCharacterMapper playerCharacterMapper;
 
     public void update(){
         compendiumUpdater.updateCompendium();
@@ -40,24 +40,28 @@ public class WebApiService {
 
     public ResponseEntity<List<PlayerCharacterDto>> getCharacters() {
         List<PlayerCharacter> characters = compendiumRepositories.getPlayerCharacterRepository().findAll();
-        List<PlayerCharacterDto> charactersDto = characters.stream().map(genericMapper::toPlayerCharacterDto).toList();
+        List<PlayerCharacterDto> charactersDto = characters.stream().map(playerCharacterMapper::toPlayerCharacterDto).toList();
         return ResponseEntity.ok(charactersDto);
     }
 
-    public ResponseEntity<PlayerCharacterDto> getCharacterById(int id){
-        PlayerCharacter playercharacter = compendiumRepositories.getPlayerCharacterRepository().findById(id).orElse(null);
-        return ResponseEntity.ok(genericMapper.toPlayerCharacterDto(playercharacter));
+    public ResponseEntity<PlayerCharacterDto> getCharacterByName(String name) throws Exception {
+        PlayerCharacter playercharacter = compendiumRepositories.getPlayerCharacterRepository().findByName(name);
+        if(playercharacter == null) throw new Exception("Character "+name+" not found");
+        return ResponseEntity.ok(playerCharacterMapper.toPlayerCharacterDto(playercharacter));
     }
 
-    public ResponseEntity<Boolean> deleteCharacterById(int id){
-        compendiumRepositories.getPlayerCharacterRepository().deleteById(id);
-        return ResponseEntity.ok(true);
+    public ResponseEntity<String> deleteCharacterByName(String name) throws Exception {
+        if(compendiumRepositories.getPlayerCharacterRepository().findByName(name) == null) throw new Exception("Character "+name+" not found");
+        compendiumRepositories.getAbilityScore_ValueRepository().deleteAllByPlayerCharacterName(name);
+        compendiumRepositories.getPlayerCharacterRepository().deleteByName(name);
+        return ResponseEntity.ok("deleted");
     }
 
-    public ResponseEntity<PlayerCharacterDto> saveCharacter(PlayerCharacterDto playerCharacterDto){
-        PlayerCharacter playerCharacter = genericMapper.toPlayerCharacter(playerCharacterDto);
-        PlayerCharacter result = compendiumRepositories.getPlayerCharacterRepository().save(playerCharacter);
-        return ResponseEntity.ok(genericMapper.toPlayerCharacterDto(result));
+    public ResponseEntity<PlayerCharacterDto> saveCharacter(PlayerCharacterDto playerCharacterDto) {
+        PlayerCharacter playerCharacter = playerCharacterMapper.toPlayerCharacter(playerCharacterDto);
+        compendiumRepositories.getPlayerCharacterRepository().save(playerCharacter);
+        compendiumRepositories.getAbilityScore_ValueRepository().saveAll(playerCharacter.getAbilityScoreValues());
+        return ResponseEntity.ok(playerCharacterDto);
     }
 
     public ResponseEntity<List<CharacterClassDto>> getClasses(){

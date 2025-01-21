@@ -11,11 +11,13 @@ import java.util.Optional;
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface ApiGenericMapper {
 
-    PlayerCharacterDto toPlayerCharacterDto(PlayerCharacter playercharacter);
-    PlayerCharacter toPlayerCharacter(PlayerCharacterDto playerCharacterDto);
+    @Mapping(target = "index", source = "entityIndex")
     CharacterClassDto toCharacterClassDto(CharacterClass characterclass);
+    @Mapping(target = "index", source = "entityIndex")
     SubRaceDto toSubRaceDto(SubRace subrace);
+    @Mapping(target = "index", source = "entityIndex")
     AlignmentDto toAlignmentDto(Alignment alignment);
+    @Mapping(target = "index", source = "entityIndex")
     RaceDto toRaceDto(Race race);
     @Mapping(target = "index", source = "entityIndex")
     SpellDto toSpellDto(Spell spell);

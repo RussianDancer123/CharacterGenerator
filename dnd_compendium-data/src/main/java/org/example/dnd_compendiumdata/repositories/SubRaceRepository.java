@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SubRaceRepository  extends JpaRepository<SubRace, Integer> {
+    SubRace findByEntityIndex(String index);
 }

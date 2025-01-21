@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CharacterClassRepository  extends JpaRepository<CharacterClass, Integer> {
+    CharacterClass findByEntityIndex(String name);
 }

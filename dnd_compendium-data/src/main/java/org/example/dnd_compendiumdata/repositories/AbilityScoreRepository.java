@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AbilityScoreRepository extends JpaRepository<AbilityScore, Integer> {
+    AbilityScore findByEntityIndex(String index);
 }

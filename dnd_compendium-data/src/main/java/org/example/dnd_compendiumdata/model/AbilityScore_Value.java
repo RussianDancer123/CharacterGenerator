@@ -1,5 +1,6 @@
 package org.example.dnd_compendiumdata.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,6 +17,7 @@ public class AbilityScore_Value {
 
     @ManyToOne
     @JoinColumn(name="playerCharacter_id")
+    @JsonIgnore
     private PlayerCharacter playerCharacter;
 
     @ManyToOne

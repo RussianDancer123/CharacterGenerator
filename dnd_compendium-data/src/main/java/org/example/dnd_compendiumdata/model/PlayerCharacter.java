@@ -14,6 +14,7 @@ public class PlayerCharacter {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String playerName;
+    @Column(unique = true)
     private String name;
     private String gender;
     private int level;

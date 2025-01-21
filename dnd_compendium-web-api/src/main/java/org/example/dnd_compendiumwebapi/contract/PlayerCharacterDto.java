@@ -7,14 +7,15 @@ import java.util.List;
 
 public record PlayerCharacterDto(String playerName,
                                  String name,
+                                 String gender,
+                                 int level,
                                  CharacterClassDto characterClassDto,
-                                 int classLevel,
-                                 BackgroundDto backgroundDto,
                                  SubRaceDto subRaceDto,
                                  AlignmentDto alignmentDto,
                                  int experience,
                                  RaceDto raceDto,
-                                 List<AbilityScore_Value> abilityScoreValues,
-                                 List<SpellDto> spellDto) {
+                                 List<AbilityScore_ValueDto> abilityScoreValueDto,
+                                 List<SpellDto> spellDto,
+                                 List<SkillDto> skillDto) {
 
 }
