@@ -22,9 +22,6 @@ public interface GenericMapper {
     AbilityScore toAbilityScore(CompendiumEntryDto entry);
 
     @Mapping(target = "entityIndex", source = "index")
-    Background toBackground(CompendiumEntryDto entry);
-
-    @Mapping(target = "entityIndex", source = "index")
     Spell toSpell(CompendiumEntryDto entry);
 
     @Mapping(target = "entityIndex", source = "index")
