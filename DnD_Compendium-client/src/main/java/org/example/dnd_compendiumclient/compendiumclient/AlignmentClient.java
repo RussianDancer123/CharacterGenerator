@@ -2,6 +2,8 @@ package org.example.dnd_compendiumclient.compendiumclient;
 
 import org.example.dnd_compendiumclient.compendiumclient.contract.CompendiumEntryResultDto;
 import org.example.dnd_compendiumclient.compendiumclient.contract.IDndCompendiumClientUriBuilderProvider;
+import org.example.dnd_compendiumclient.compendiumclient.contract.details.AlignmentetailsDto;
+import org.example.dnd_compendiumclient.compendiumclient.contract.details.CompendiumEntryDetailsDto;
 import org.springframework.web.client.RestTemplate;
 
 public class AlignmentClient implements IAlignmentClient {
@@ -17,5 +19,11 @@ public class AlignmentClient implements IAlignmentClient {
     public CompendiumEntryResultDto getAlignments() {
         var uri = provider.builder().pathSegment("alignments").toUriString();
         return restTemplate.getForEntity(uri, CompendiumEntryResultDto.class).getBody();
+    }
+
+    @Override
+    public String getAlignmentDetails(String index) {
+        var uri = provider.builder().pathSegment("alignments", index).toUriString();
+        return restTemplate.getForEntity(uri, AlignmentetailsDto.class).getBody().desc();
     }
 }

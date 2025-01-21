@@ -20,6 +20,7 @@ public class RaceDetails {
     private String name;
     private String url;
     private int speed;
+    @Column(columnDefinition = "TEXT")
     private String age;
     private String size;
 }

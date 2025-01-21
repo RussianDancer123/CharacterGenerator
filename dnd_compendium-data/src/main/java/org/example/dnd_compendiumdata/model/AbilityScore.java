@@ -13,6 +13,7 @@ public class AbilityScore{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(unique=true)
     private String entityIndex;
     private String name;
     private String fullName;

@@ -1,8 +1,8 @@
 package org.example.dnd_compendiumclient.compendiumclient;
 
-import org.example.dnd_compendiumclient.compendiumclient.contract.details.AbilityScoreDetailDto;
 import org.example.dnd_compendiumclient.compendiumclient.contract.CompendiumEntryResultDto;
 import org.example.dnd_compendiumclient.compendiumclient.contract.IDndCompendiumClientUriBuilderProvider;
+import org.example.dnd_compendiumclient.compendiumclient.contract.details.AbilityScoreDetailsDto;
 import org.springframework.web.client.RestTemplate;
 
 public class AbilityScoreClient implements IAbilityScoreClient {
@@ -21,8 +21,8 @@ public class AbilityScoreClient implements IAbilityScoreClient {
     }
 
     @Override
-    public AbilityScoreDetailDto getAbilityScoreDetail(String index){
-        var uri = provider.builder().pathSegment("ability-scores").pathSegment(index).toUriString();
-        return restTemplate.getForEntity(uri, AbilityScoreDetailDto.class).getBody();
+    public AbilityScoreDetailsDto getAbilityScoreDetails(String entityIndex) {
+        var uri = provider.builder().pathSegment("ability-scores", entityIndex).toUriString();
+        return restTemplate.getForEntity(uri, AbilityScoreDetailsDto.class).getBody();
     }
 }

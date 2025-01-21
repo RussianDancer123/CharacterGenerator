@@ -1,9 +1,10 @@
 package org.example.dnd_compendiumupdater.mapper;
 
+import jakarta.persistence.ManyToOne;
 import org.example.dnd_compendiumclient.compendiumclient.contract.CompendiumEntryDto;
 import org.example.dnd_compendiumclient.compendiumclient.contract.SpellDto;
+import org.example.dnd_compendiumclient.compendiumclient.contract.details.CompendiumEntryDetailsDto;
 import org.example.dnd_compendiumclient.compendiumclient.contract.details.RaceDetailDto;
-import org.example.dnd_compendiumclient.compendiumclient.contract.details.SpellDetailDto;
 import org.example.dnd_compendiumdata.model.*;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -24,14 +25,22 @@ public interface GenericMapper {
     Background toBackground(CompendiumEntryDto entry);
 
     @Mapping(target = "entityIndex", source = "index")
-    Spell toSpell(SpellDto entry);
+    Spell toSpell(CompendiumEntryDto entry);
 
     @Mapping(target = "entityIndex", source = "index")
     SubRace toSubRace(CompendiumEntryDto entry);
 
     @Mapping(target = "entityIndex", source = "index")
-    SpellDetails toSpellDetails(SpellDetailDto spellDetailsDto);
+    @Mapping(target = "description", ignore = true)
+    SpellDetails toSpellDetails(CompendiumEntryDetailsDto spellDetailsDto);
+
+    @Mapping(target = "entityIndex", source = "index")
+    @Mapping(target = "description", ignore = true)
+    SkillDetails toSkillDetails(CompendiumEntryDetailsDto skillDetailsDto);
 
     @Mapping(target = "entityIndex", source = "index")
     Skill toSkill(CompendiumEntryDto entryDto);
+
+    @Mapping(target = "entityIndex", source = "index")
+    Alignment toAlignment(CompendiumEntryDto entryDto);
 }

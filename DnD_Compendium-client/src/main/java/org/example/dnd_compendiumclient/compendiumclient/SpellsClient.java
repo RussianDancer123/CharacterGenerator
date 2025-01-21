@@ -3,8 +3,7 @@ package org.example.dnd_compendiumclient.compendiumclient;
 import org.example.dnd_compendiumclient.compendiumclient.contract.CompendiumEntryResultDto;
 import org.example.dnd_compendiumclient.compendiumclient.contract.DndCompendiumClientUriBuilderProvider;
 import org.example.dnd_compendiumclient.compendiumclient.contract.IDndCompendiumClientUriBuilderProvider;
-import org.example.dnd_compendiumclient.compendiumclient.contract.SpellResultDto;
-import org.example.dnd_compendiumclient.compendiumclient.contract.details.SpellDetailDto;
+import org.example.dnd_compendiumclient.compendiumclient.contract.details.CompendiumEntryDetailsDto;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -19,14 +18,14 @@ public class SpellsClient implements ISpellsClient{
     }
 
     @Override
-    public SpellResultDto getSpells() {
+    public CompendiumEntryResultDto getSpells() {
         var uri = provider.builder().pathSegment("spells").toUriString();
-        return restTemplate.getForEntity(uri, SpellResultDto.class).getBody();
+        return restTemplate.getForEntity(uri, CompendiumEntryResultDto.class).getBody();
     }
 
     @Override
-    public SpellDetailDto getSpellDetails(String entityIndex) {
+    public CompendiumEntryDetailsDto getSpellDetails(String entityIndex) {
         var uri = provider.builder().pathSegment("spells", entityIndex).toUriString();
-        return restTemplate.getForEntity(uri, SpellDetailDto.class).getBody();
+        return restTemplate.getForEntity(uri, CompendiumEntryDetailsDto.class).getBody();
     }
 }

@@ -1,4 +1,6 @@
 package org.example.dnd_compendiumclient.compendiumclient.contract.details;
 
-public record RaceDetailDto(String index, String name, String url, int speed) {
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public record RaceDetailDto(String index, String name, String age, String size, String url, int speed) {
 }
