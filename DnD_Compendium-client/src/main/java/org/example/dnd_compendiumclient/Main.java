@@ -1,6 +1,6 @@
 package org.example.dnd_compendiumclient;
 
-import org.example.dnd_compendiumclient.compendiumclient.ICompendiumClient;
+import org.example.dnd_compendiumclient.compendiumclient.client.ICompendiumClient;
 
 public class Main {
     public static void main(String[] args) {

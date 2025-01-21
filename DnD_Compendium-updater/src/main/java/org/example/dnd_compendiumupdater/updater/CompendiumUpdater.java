@@ -1,10 +1,9 @@
 package org.example.dnd_compendiumupdater.updater;
 
 import jakarta.transaction.Transactional;
-import org.example.dnd_compendiumclient.compendiumclient.*;
+import org.example.dnd_compendiumclient.compendiumclient.client.*;
 import org.example.dnd_compendiumclient.compendiumclient.contract.CompendiumEntryDto;
 import org.example.dnd_compendiumclient.compendiumclient.contract.SpellDto;
-import org.example.dnd_compendiumclient.compendiumclient.contract.SpellResultDto;
 import org.example.dnd_compendiumclient.compendiumclient.contract.details.AbilityScoreDetailsDto;
 import org.example.dnd_compendiumclient.compendiumclient.contract.details.CompendiumEntryDetailsDto;
 import org.example.dnd_compendiumclient.compendiumclient.contract.details.RaceDetailDto;

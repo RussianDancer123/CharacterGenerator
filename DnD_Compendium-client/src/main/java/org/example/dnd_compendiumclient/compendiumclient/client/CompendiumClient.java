@@ -1,4 +1,4 @@
-package org.example.dnd_compendiumclient.compendiumclient;
+package org.example.dnd_compendiumclient.compendiumclient.client;
 
 import lombok.Getter;
 import org.example.dnd_compendiumclient.compendiumclient.contract.IDndCompendiumClientUriBuilderProvider;

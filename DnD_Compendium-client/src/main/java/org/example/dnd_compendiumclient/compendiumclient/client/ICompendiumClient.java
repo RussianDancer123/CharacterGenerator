@@ -1,4 +1,4 @@
-package org.example.dnd_compendiumclient.compendiumclient;
+package org.example.dnd_compendiumclient.compendiumclient.client;
 
 
 public interface ICompendiumClient {

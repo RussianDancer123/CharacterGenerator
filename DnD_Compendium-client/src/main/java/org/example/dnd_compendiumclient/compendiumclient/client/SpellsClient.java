@@ -1,11 +1,8 @@
-package org.example.dnd_compendiumclient.compendiumclient;
+package org.example.dnd_compendiumclient.compendiumclient.client;
 
-import org.example.dnd_compendiumclient.compendiumclient.contract.CompendiumEntryResultDto;
-import org.example.dnd_compendiumclient.compendiumclient.contract.DndCompendiumClientUriBuilderProvider;
 import org.example.dnd_compendiumclient.compendiumclient.contract.IDndCompendiumClientUriBuilderProvider;
 import org.example.dnd_compendiumclient.compendiumclient.contract.SpellResultDto;
 import org.example.dnd_compendiumclient.compendiumclient.contract.details.CompendiumEntryDetailsDto;
-import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 public class SpellsClient implements ISpellsClient{

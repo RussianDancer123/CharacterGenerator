@@ -1,7 +1,6 @@
-package org.example.dnd_compendiumclient.compendiumclient;
+package org.example.dnd_compendiumclient.compendiumclient.client;
 
 import org.example.dnd_compendiumclient.compendiumclient.contract.CompendiumEntryResultDto;
-import org.example.dnd_compendiumclient.compendiumclient.contract.details.CompendiumEntryDetailsDto;
 
 public interface IAlignmentClient {
     CompendiumEntryResultDto getAlignments();

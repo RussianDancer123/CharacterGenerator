@@ -1,8 +1,6 @@
 package org.example.dnd_compendiumclient;
 
-import org.example.dnd_compendiumclient.compendiumclient.CompendiumClient;
-import org.example.dnd_compendiumclient.compendiumclient.ICompendiumClient;
-import org.example.dnd_compendiumclient.compendiumclient.ISpellsClient;
+import org.example.dnd_compendiumclient.compendiumclient.client.ICompendiumClient;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

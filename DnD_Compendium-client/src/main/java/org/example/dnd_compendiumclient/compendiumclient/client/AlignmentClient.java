@@ -1,9 +1,8 @@
-package org.example.dnd_compendiumclient.compendiumclient;
+package org.example.dnd_compendiumclient.compendiumclient.client;
 
 import org.example.dnd_compendiumclient.compendiumclient.contract.CompendiumEntryResultDto;
 import org.example.dnd_compendiumclient.compendiumclient.contract.IDndCompendiumClientUriBuilderProvider;
 import org.example.dnd_compendiumclient.compendiumclient.contract.details.AlignmentetailsDto;
-import org.example.dnd_compendiumclient.compendiumclient.contract.details.CompendiumEntryDetailsDto;
 import org.springframework.web.client.RestTemplate;
 
 public class AlignmentClient implements IAlignmentClient {
