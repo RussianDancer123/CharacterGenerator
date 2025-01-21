@@ -23,6 +23,6 @@ public class DnDCompendiumUpdaterApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        compendiumUpdater.updateCompendium();
+//        compendiumUpdater.updateCompendium();
     }
 }

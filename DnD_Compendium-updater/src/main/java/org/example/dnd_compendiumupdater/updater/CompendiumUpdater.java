@@ -3,6 +3,8 @@ package org.example.dnd_compendiumupdater.updater;
 import jakarta.transaction.Transactional;
 import org.example.dnd_compendiumclient.compendiumclient.*;
 import org.example.dnd_compendiumclient.compendiumclient.contract.CompendiumEntryDto;
+import org.example.dnd_compendiumclient.compendiumclient.contract.SpellDto;
+import org.example.dnd_compendiumclient.compendiumclient.contract.SpellResultDto;
 import org.example.dnd_compendiumclient.compendiumclient.contract.details.AbilityScoreDetailsDto;
 import org.example.dnd_compendiumclient.compendiumclient.contract.details.CompendiumEntryDetailsDto;
 import org.example.dnd_compendiumclient.compendiumclient.contract.details.RaceDetailDto;
@@ -57,7 +59,6 @@ public class CompendiumUpdater implements ICompendiumUpdater {
 
     private void updateAlignmentDescription(Alignment alignment){
         IAlignmentClient client = compendiumClient.getAlignmentClient();
-        AlignmentRepository repo = compendiumRepositories.getAlignmentRepository();
 
         String alignmentDetails = client.getAlignmentDetails(alignment.getEntityIndex());
         alignment.setDescription(alignmentDetails);
@@ -112,14 +113,34 @@ public class CompendiumUpdater implements ICompendiumUpdater {
     }
 
     private void updateCharacterClass(){
+        ICharacterClassClient client = compendiumClient.getCharacterClassClient();
+        CharacterClassRepository repo = compendiumRepositories.getCharacterClassRepository();
 
+        List<CompendiumEntryDto> characterClassDto = client.getCharacterClasses().results();
+        List<CharacterClass> characterClasses = characterClassDto.stream().map(genericMapper::toCharacterClass).toList();
+
+        List<String> duplicates = repo
+                .findAll().stream()
+                .map(CharacterClass::getEntityIndex).toList();
+        characterClasses = characterClasses.stream().filter(as -> !duplicates.contains(as.getEntityIndex())).toList();
+
+        characterClasses.forEach(this::updateCharacterClassHitDie);
+
+        repo.saveAll(characterClasses);
+    }
+
+    private void updateCharacterClassHitDie(CharacterClass characterClass) {
+        ICharacterClassClient client = compendiumClient.getCharacterClassClient();
+
+        int characterClassHitDie = client.getCharacterClassHitDie(characterClass.getEntityIndex());
+        characterClass.setHitDie(characterClassHitDie);
     }
 
     private void updateSpell(){
         ISpellsClient client = compendiumClient.getSpellsClient();
         SpellRepository repo = compendiumRepositories.getSpellRepository();
 
-        List<CompendiumEntryDto> spellDto = client.getSpells().results();
+        List<SpellDto> spellDto = client.getSpells().results();
         List<Spell> spells = spellDto.stream().map(genericMapper::toSpell).toList();
 
         List<String> duplicates = repo

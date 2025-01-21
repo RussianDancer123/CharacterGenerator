@@ -22,7 +22,7 @@ public interface GenericMapper {
     AbilityScore toAbilityScore(CompendiumEntryDto entry);
 
     @Mapping(target = "entityIndex", source = "index")
-    Spell toSpell(CompendiumEntryDto entry);
+    Spell toSpell(SpellDto entry);
 
     @Mapping(target = "entityIndex", source = "index")
     SubRace toSubRace(CompendiumEntryDto entry);
@@ -40,4 +40,7 @@ public interface GenericMapper {
 
     @Mapping(target = "entityIndex", source = "index")
     Alignment toAlignment(CompendiumEntryDto entryDto);
+
+    @Mapping(target = "entityIndex", source = "index")
+    CharacterClass toCharacterClass(CompendiumEntryDto entryDto);
 }

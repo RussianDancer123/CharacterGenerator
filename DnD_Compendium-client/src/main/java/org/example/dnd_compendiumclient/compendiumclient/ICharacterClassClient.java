@@ -4,4 +4,6 @@ import org.example.dnd_compendiumclient.compendiumclient.contract.CompendiumEntr
 
 public interface ICharacterClassClient {
     CompendiumEntryResultDto getCharacterClasses();
+
+    int getCharacterClassHitDie(String entityIndex);
 }

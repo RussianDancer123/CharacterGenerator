@@ -25,6 +25,6 @@ public class DnDCompendiumClientApplication implements CommandLineRunner {
 	/**-----------------------TEST----------------------**/
 	@Override
 	public void run(String... args) throws Exception {
-		Main.test(compendiumClient);
+//		Main.test(compendiumClient);
 	}
 }

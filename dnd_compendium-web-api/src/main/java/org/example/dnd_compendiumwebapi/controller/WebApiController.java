@@ -26,6 +26,11 @@ public class WebApiController {
         return ResponseEntity.ok("updated");
     }
 
+    @GetMapping("character")
+    public ResponseEntity<List<PlayerCharacterDto>> getCharacters(){
+        return service.getCharacters();
+    }
+
     @GetMapping("character/{id}")
     public ResponseEntity<PlayerCharacterDto> getCharacterById(@PathVariable int id) {
         return service.getCharacterById(id);
@@ -44,11 +49,6 @@ public class WebApiController {
     @GetMapping("classes")
     public ResponseEntity<List<CharacterClassDto>> getClasses(){
         return service.getClasses();
-    }
-
-    @GetMapping("backgrounds")
-    public ResponseEntity<List<BackgroundDto>> getBackgrounds(){
-        return service.getBackgrounds();
     }
 
     @GetMapping("subraces")
@@ -71,9 +71,19 @@ public class WebApiController {
         return service.getSpells();
     }
 
+    @GetMapping("spells/{index}")
+    public ResponseEntity<SpellDetailsDto> getSpellDetails(@PathVariable String index) {
+        return service.getSpellDetails(index);
+    }
+
     @GetMapping("skills")
     public ResponseEntity<List<SkillDto>> getSkills(){
         return service.getSkills();
+    }
+
+    @GetMapping("skills/{index}")
+    public ResponseEntity<SkillDetailsDto> getSkillDetails(@PathVariable String index){
+        return service.getSkilletails(index);
     }
 
 }

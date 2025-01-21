@@ -38,6 +38,12 @@ public class WebApiService {
 //        return ResponseEntity.ok(playerCharacterDto);
 //    }
 
+    public ResponseEntity<List<PlayerCharacterDto>> getCharacters() {
+        List<PlayerCharacter> characters = compendiumRepositories.getPlayerCharacterRepository().findAll();
+        List<PlayerCharacterDto> charactersDto = characters.stream().map(genericMapper::toPlayerCharacterDto).toList();
+        return ResponseEntity.ok(charactersDto);
+    }
+
     public ResponseEntity<PlayerCharacterDto> getCharacterById(int id){
         PlayerCharacter playercharacter = compendiumRepositories.getPlayerCharacterRepository().findById(id).orElse(null);
         return ResponseEntity.ok(genericMapper.toPlayerCharacterDto(playercharacter));
@@ -58,12 +64,6 @@ public class WebApiService {
         List<CharacterClass> characterClasses = compendiumRepositories.getCharacterClassRepository().findAll();
         List<CharacterClassDto> characterClassDto = characterClasses.stream().map(genericMapper::toCharacterClassDto).toList();
         return ResponseEntity.ok(characterClassDto);
-    }
-
-    public ResponseEntity<List<BackgroundDto>> getBackgrounds(){
-        List<Background> backgrounds = compendiumRepositories.getBackgroundRepository().findAll();
-        List<BackgroundDto> backgroundDto = backgrounds.stream().map(genericMapper::toBackgroundDto).toList();
-        return ResponseEntity.ok(backgroundDto);
     }
 
     public ResponseEntity<List<SubRaceDto>> getSubRaces(){
@@ -90,10 +90,39 @@ public class WebApiService {
         return ResponseEntity.ok(spellDto);
     }
 
+    public ResponseEntity<SpellDetailsDto> getSpellDetails(String index){
+        Spell spell = compendiumRepositories.getSpellRepository().findByEntityIndex(index);
+        if(spell == null){
+            SpellDetailsDto spellDetailsDto = new SpellDetailsDto();
+            spellDetailsDto.setName("invalid index");
+            return ResponseEntity.ok(spellDetailsDto);
+        }
+
+        SpellDetailsDto spellDetailsDto = genericMapper.toSpellDetailsDto(spell);
+        SpellDetails spellDetails = compendiumRepositories.getSpellDetailsRepository().findByEntityIndex(index);
+        spellDetailsDto.setDescription(spellDetails.getDescription());
+        return ResponseEntity.ok(spellDetailsDto);
+    }
+
     public ResponseEntity<List<SkillDto>> getSkills() {
         List<Skill> skills = compendiumRepositories.getSkillRepository().findAll();
         List<SkillDto> skillDto = skills.stream().map(genericMapper::toSkillDto).toList();
         return ResponseEntity.ok(skillDto);
     }
+
+    public ResponseEntity<SkillDetailsDto> getSkilletails(String index){
+        Skill skill = compendiumRepositories.getSkillRepository().findByEntityIndex(index);
+        if(skill == null){
+            SkillDetailsDto skillDetailsDto = new SkillDetailsDto();
+            skillDetailsDto.setName("invalid index");
+            return ResponseEntity.ok(skillDetailsDto);
+        }
+
+        SkillDetailsDto skillDetailsDto = genericMapper.toSkillDetailsDto(skill);
+        SkillDetails skillDetails = compendiumRepositories.getSkillDetailsRepository().findByEntityIndex(index);
+        skillDetailsDto.setDescription(skillDetails.getDescription());
+        return ResponseEntity.ok(skillDetailsDto);
+    }
+
 
 }
