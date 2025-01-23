@@ -5,6 +5,7 @@ import org.example.dnd_compendiumwebapi.contract.*;
 import org.example.dnd_compendiumwebapi.service.WebApiService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,11 +17,6 @@ public class WebApiController {
     public WebApiController(WebApiService service) {
         this.service = service;
     }
-
-//    @GetMapping("character/generate")
-//    public ResponseEntity<PlayerCharacterDto> generateCharacter() {
-//        return service.generatePlayerCharacter();
-//    }
 
     @GetMapping("update")
     public ResponseEntity<String> update(){

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>Create Player Character</h1>
+
+<form th:action="@{/leaf/character/save}" th:object="${characterForm}" method="post">
+
+    <label for="playerName">Player Name:</label>
+    <input type="text" id="playerName" th:field="*{playerName}" required />
+    <br />
+
+    <label for="name">Character Name:</label>
+    <input type="text" id="name" th:field="*{name}" required />
+    <br />
+
+    <label for="gender">Gender:</label>
+    <input type="text" id="gender" th:field="*{gender}" />
+    <br />
+
+    <label for="level">Level:</label>
+    <input type="number" id="level" th:field="*{level}" />
+    <br />
+
+    <label for="experience">Experience:</label>
+    <input type="number" id="experience" th:field="*{experience}" />
+    <br />
+
+    <!-- Dropdown for Character Class -->
+    <label for="characterClassIndex">Character Class:</label>
+    <select id="characterClassIndex" th:field="*{characterClassIndex}">
+        <option th:each="class : ${classes}" th:value="${class.index}" th:text="${class.name}"></option>
+    </select>
+    <br />
+
+    <!-- Dropdown for SubRace -->
+    <label for="subRaceIndex">SubRace:</label>
+    <select id="subRaceIndex" th:field="*{subRaceIndex}">
+        <option th:each="subRace : ${subRaces}" th:value="${subRace.index}" th:text="${subRace.name}"></option>
+    </select>
+    <br />
+
+    <!-- Dropdown for Alignment -->
+    <label for="alignmentIndex">Alignment:</label>
+    <select id="alignmentIndex" th:field="*{alignmentIndex}">
+        <option th:each="alignment : ${alignments}" th:value="${alignment.index}" th:text="${alignment.name}"></option>
+    </select>
+    <br />
+
+    <!-- Dropdown for Race -->
+    <label for="raceIndex">Race:</label>
+    <select id="raceIndex" th:field="*{raceIndex}">
+        <option th:each="race : ${races}" th:value="${race.index}" th:text="${race.name}"></option>
+    </select>
+    <br />
+
+    <!-- Checkboxes for Spells -->
+    <label>Spells:</label>
+    <div style="height: 400px; overflow: scroll">
+    <div th:each="spell : ${spells}">
+        <input type="checkbox" th:field="*{spellIndices}" th:value="${spell.index}" />
+        <span th:text="${spell.name}"></span>
+        <br />
+    </div>
+    </div>
+
+    <!-- Checkboxes for Skills -->
+    <label>Skills:</label>
+    <div style="height: 200px; overflow: scroll">
+    <div th:each="skill : ${skills}">
+        <input type="checkbox" th:field="*{skillIndices}" th:value="${skill.index}" />
+        <span th:text="${skill.name}"></span>
+        <br />
+    </div>
+    </div>
+
+    <button type="submit">Save Character</button>
+</form>
+
+
+
+    <h2>Character Classes</h2>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Index</th>
+            <th>Name</th>
+            <th>Hit Die</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="characterClass : ${classes}">
+            <td th:text="${characterClass.index}"></td>
+            <td th:text="${characterClass.name}"></td>
+            <td th:text="${characterClass.hitDie}"></td>
+        </tr>
+        <span th:text="${name}" />
+        </tbody>
+    </table>
+
+<h2>Character SubRaces</h2>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Index</th>
+        <th>Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="characterClass : ${subRaces}">
+        <td th:text="${characterClass.index}"></td>
+        <td th:text="${characterClass.name}"></td>
+    </tr>
+    <span th:text="${name}" />
+    </tbody>
+</table>
+
+<h2>Character Alignments</h2>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Index</th>
+        <th>Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="characterClass : ${alignments}">
+        <td th:text="${characterClass.index}"></td>
+        <td th:text="${characterClass.name}"></td>
+    </tr>
+    <span th:text="${name}" />
+    </tbody>
+</table>
+
+<h2>Character Races</h2>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Index</th>
+        <th>Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="characterClass : ${races}">
+        <td th:text="${characterClass.index}"></td>
+        <td th:text="${characterClass.name}"></td>
+    </tr>
+    <span th:text="${name}" />
+    </tbody>
+</table>
+
+<h2>Character Skills</h2>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Index</th>
+        <th>Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="characterClass : ${skills}">
+        <td th:text="${characterClass.index}"></td>
+        <td th:text="${characterClass.name}"></td>
+    </tr>
+    <span th:text="${name}" />
+    </tbody>
+</table>
+
+<h2>Character Spells</h2>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Index</th>
+        <th>Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="characterClass : ${spells}">
+        <td th:text="${characterClass.index}"></td>
+        <td th:text="${characterClass.name}"></td>
+    </tr>
+    <span th:text="${name}" />
+    </tbody>
+</table>
+
+
+</body>
+</html>

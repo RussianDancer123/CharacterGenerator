@@ -8,8 +8,6 @@ import org.example.dnd_compendiumupdater.updater.ICompendiumUpdater;
 import org.example.dnd_compendiumwebapi.contract.*;
 import org.example.dnd_compendiumwebapi.mapper.ApiGenericMapper;
 import org.example.dnd_compendiumwebapi.mapper.PlayerCharacterMapper;
-import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -28,15 +26,6 @@ public class WebApiService {
     public void update(){
         compendiumUpdater.updateCompendium();
     }
-
-    /**
-     * test
-     */
-//    public ResponseEntity<PlayerCharacterDto> generatePlayerCharacter() {
-//        PlayerCharacterDto playerCharacterDto = new PlayerCharacterDto();
-//
-//        return ResponseEntity.ok(playerCharacterDto);
-//    }
 
     public ResponseEntity<List<PlayerCharacterDto>> getCharacters() {
         List<PlayerCharacter> characters = compendiumRepositories.getPlayerCharacterRepository().findAll();
