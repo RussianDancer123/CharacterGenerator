@@ -13,6 +13,12 @@ public class PlayerCharacterForm {
     private String gender;
     private int level;
     private int experience;
+    private int cha;
+    private int con;
+    private int dex;
+    private int inte;
+    private int str;
+    private int wis;
     private String characterClassIndex;
     private String subRaceIndex;
     private String alignmentIndex;

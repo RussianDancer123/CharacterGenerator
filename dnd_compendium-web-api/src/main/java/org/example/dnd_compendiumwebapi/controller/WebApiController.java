@@ -1,5 +1,6 @@
 package org.example.dnd_compendiumwebapi.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.example.dnd_compendiumdata.model.PlayerCharacter;
 import org.example.dnd_compendiumwebapi.contract.*;
 import org.example.dnd_compendiumwebapi.service.WebApiService;

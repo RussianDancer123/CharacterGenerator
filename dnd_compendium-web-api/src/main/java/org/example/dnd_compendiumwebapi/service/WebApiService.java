@@ -8,6 +8,8 @@ import org.example.dnd_compendiumupdater.updater.ICompendiumUpdater;
 import org.example.dnd_compendiumwebapi.contract.*;
 import org.example.dnd_compendiumwebapi.mapper.ApiGenericMapper;
 import org.example.dnd_compendiumwebapi.mapper.PlayerCharacterMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
