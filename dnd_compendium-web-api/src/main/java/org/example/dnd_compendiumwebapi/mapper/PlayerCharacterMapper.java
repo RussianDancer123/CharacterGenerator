@@ -12,7 +12,6 @@ import java.util.List;
 @AllArgsConstructor
 public class PlayerCharacterMapper {
     private final CompendiumRepositories repo;
-    private final CompendiumRepositories compendiumRepositories;
     private final ApiGenericMapper genericMapper;
 
     public PlayerCharacter toPlayerCharacter(PlayerCharacterDto playerCharacterDto) {
@@ -53,7 +52,7 @@ public class PlayerCharacterMapper {
     private AbilityScore_Value toAbilityScoreValue(AbilityScore_ValueDto abilityScoreValueDto) {
         AbilityScore_Value abilityScoreValue = new AbilityScore_Value();
         abilityScoreValue.setValue(abilityScoreValueDto.value());
-        abilityScoreValue.setAbilityScore(compendiumRepositories.getAbilityScoreRepository().findByEntityIndex(abilityScoreValueDto.index()));
+        abilityScoreValue.setAbilityScore(repo.getAbilityScoreRepository().findByEntityIndex(abilityScoreValueDto.index()));
         return abilityScoreValue;
     }
 
